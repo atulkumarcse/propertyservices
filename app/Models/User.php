@@ -106,6 +106,7 @@ class User extends Authenticatable implements HasDefaultTenant, HasTenants, Fila
     public function canAccessPanel(Panel $panel): bool
     {
         $panelId = $panel->getId();
+        //dd($panelId);
         return $this->canAccessPanelById($panelId);
     }
 
@@ -116,6 +117,9 @@ class User extends Authenticatable implements HasDefaultTenant, HasTenants, Fila
         }
         if ($panelId === "app") {
             return $this->hasRole(["staff", 'admin', 'super_admin']);
+        }
+        if ($panelId === "seller") {
+            return $this->hasRole(['seller']);
         }
         $allowedRoles = config("filament-shield.panels.$panelId", []);
 	    return $this->hasAnyRole($allowedRoles);

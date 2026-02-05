@@ -17,9 +17,9 @@ public function run()
     $salesCategory = PropertyCategory::where('name', 'sales')->first();
     $lettingsCategory = PropertyCategory::where('name', 'lettings')->first();
     $hmoCategory = PropertyCategory::where('name', 'hmo')->first();
-    $this->createProperties($salesCategory, 10);
-    $this->createProperties($lettingsCategory, 10);
-    $this->createHmoProperties($hmoCategory, 5);
+    $this->createProperties($salesCategory, 1);
+    $this->createProperties($lettingsCategory, 1);
+    $this->createHmoProperties($hmoCategory, 1);
 }
 private function createProperties($category, $count)
 {
